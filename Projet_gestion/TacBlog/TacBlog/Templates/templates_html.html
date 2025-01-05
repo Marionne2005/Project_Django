@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestion de taches</title>
+</head>
+<body>
+  <h1 style="text-align:center;">Bienvenue sur TASK MANAGEMENT</h1>
+
+      <p style="text-align:center;">Facilitez votre quotidien avec TASK MANAGEMENT, un espace conçu pour vous aider à organiser vos tâches personnelles, gérer vos responsabilités professionnelles et académiques, et simplifier vos corvées ménagères.</p>
+      <p>Avant de commencer, veuillez s'il vous plait enregistrer vos informations dans le formulaire ci-dessous. </p>
+      <form action="/informations/" method="POST">
+         {% csrf_token %}
+          <label for="nom">Nom: </label>
+          <input type="text" id="nom" name="nom">
+          <label for="email" >Email: </label>
+          <input type="email" id="email" name="email">
+          <button type="submit">Envoyer</button>
+      </form>
+
+
+</body>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Taches personnelles</title>
+</head>
+<body>
+   <h1 style="text-align: center;">Taches personnelles</h1>
+   <p style="text-align: center">Envie de vous accorder un moment rien qu’à vous ? Organisez vos tâches personnelles avec nous et prenez soin de vous en toute simplicité!</p>
+   <form action="{% url 'info_personnel' %}" method="POST">
+       {% csrf_token %}
+       <table border="1" style="width: 100%; text-align: center;">
+           <thead>
+             <tr>
+               <th>Taches a faire</th>
+               <th> Description</th>
+               <th>Ordre de priorite</th>
+               <th>Actions</th>
+             </tr>
+           </thead>
+           <tbody>
+             <!--Afficher les données enregistrés-->
+             {% for mana in donnees %}
+             <tr>
+                 <td>{{ mana.title }}</td>
+                 <td>{{ mana.description }}</td>
+                 <td>{{ mana.priority }}</td>
+                 <td>
+                     <a href="{% url 'do_tache' mana.id %}" type="button" style="color: red;">Supprimer</a>
+                 </td>
+                 <td>
+            <!-- Formulaire de modification -->
+                   <form action="{% url 'modifier_tache' mana.id %}" method="POST">
+                     {% csrf_token %}
+                     <input type="text" name="title" value="{{ mana.title }}">
+                     <textarea name="description">{{ mana.description }}</textarea>
+                     <select name="priority">
+                       <option value= "Haute" {% if mana.priority == "Haute" %}selected{% endif %}>Prioritaire</option>
+                       <option value= "Moyenne" {% if mana.priority == "Moyenne" %}selected{% endif %}>À faire</option>
+                       <option value= "Basse" {% if mana.priority == "Basse" %}selected{% endif %}>À voir</option>
+                     </select>
+                     <button type="submit" name="option_enre" value="Modifier" style="color: green;">Modifier</button>
+                  </form>
+                 </td>
+
+             </tr>
+             {% endfor %}
+
+
+             <tr>
+               <td><input type="text" name="Tache[]" placeholder="Tache a faire"></td>
+               <td><textarea name="description[]"  placeholder="Veuillez decrire votre tache"></textarea></td>
+               <td>
+                   <select name="priorities[]">
+                       <option value="Haute">Prioritaire</option>
+                       <option value="Moyenne">A faire</option>
+                       <option value="Basse">A voir</option>
+                   </select>
+               </td>
+             </tr>
+           </tbody>
+       </table>
+       <br>
+       <button type="submit">Enregistrer</button>
+       <form action="{% url 'do_tache_all' %}" method="POST">
+           {% csrf_token %}
+           <button type="submit">Supprimer la page</button>
+       </form>
+
+   </form>
+
+
+
+</body>
+</html>
