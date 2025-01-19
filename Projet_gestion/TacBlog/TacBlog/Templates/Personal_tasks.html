@@ -1,13 +1,18 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Taches personnelles</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-   <h1 style="text-align: center;">Taches personnelles</h1>
-   <p style="text-align: center">Envie de vous accorder un moment rien qu’à vous ? Organisez vos tâches personnelles avec nous et prenez soin de vous en toute simplicité!</p>
-   <form action="{% url 'info_personnel' %}" method="POST">
+  <header>
+      <h1>TACHES</h1>
+  </header>
+  <main>
+    <p>Envie de vous accorder un moment rien qu’à vous ? Organisez vos tâches personnelles avec nous et prenez soin de vous en toute simplicité!</p>
+    <form action="{% url 'info_personnel' %}" method="POST">
        {% csrf_token %}
        <table border="1" style="width: 100%; text-align: center;">
            <thead>
@@ -67,7 +72,8 @@
            <button type="submit">Supprimer la page</button>
        </form>
 
-   </form>
+    </form>
+  </main>
 
 
 

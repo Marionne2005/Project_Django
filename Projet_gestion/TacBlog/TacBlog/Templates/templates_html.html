@@ -1,13 +1,17 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en" xmlns:text-align="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Gestion de taches</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-  <h1 style="text-align:center;">Bienvenue sur TASK MANAGEMENT</h1>
-
-      <p style="text-align:center;">Facilitez votre quotidien avec TASK MANAGEMENT, un espace conçu pour vous aider à organiser vos tâches personnelles, gérer vos responsabilités professionnelles et académiques, et simplifier vos corvées ménagères.</p>
+  <header>
+    <h1>Bienvenue sur TASK MANAGEMENT</h1>
+  </header>
+  <main>
+      <p>Facilitez votre quotidien avec TASK MANAGEMENT, un espace conçu pour vous aider à organiser vos tâches personnelles, gérer vos responsabilités professionnelles et académiques, et simplifier vos corvées ménagères.</p>
       <p>Avant de commencer, veuillez s'il vous plait enregistrer vos informations dans le formulaire ci-dessous. </p>
       <form action="/informations/" method="POST">
          {% csrf_token %}
@@ -17,6 +21,6 @@
           <input type="email" id="email" name="email">
           <button type="submit">Envoyer</button>
       </form>
-
+  </main>
 
 </body>

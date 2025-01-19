@@ -1,53 +1,33 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Page reponse</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-  <h1 style="color:green;">Bienvenue {{nom}} sur TASK MANAGEMENT. </h1><br>
-  <p>Nous avons enregistré votre mail:{{email}}. Commencons!!</p>
-  <p>Voici un apercu des differents services que proposent notre site</p>
-  <ul>
-      <h3>Taches personelles</h3>
+  <header>
+    <h1>Bienvenue {{nom}} sur TASK MANAGEMENT. </h1><br>
+  </header>
+  <main>
+      <p>Nous avons enregistré votre mail:{{email}}. Voici un apercu des différents services que proposent notre site.</p>
+      <h3>Taches courantes: </h3>
       <ol>
           <li>Acheter des courses</li>
           <li>Faire du sport</li>
           <li>Lire un livre</li>
-          <li>Se faire plaisir</li>
-          <li style=>
+          <li>Reviser pour un test</li>
+          <li>Nettoyer la cuisine</li>
+
           <form action="{% url 'info_personnel' %}" method="POST">
               {% csrf_token %}
               <button type="submit" name="type_tache" value="personnelles">DECOUVRIR </button>
           </form>
           </li>
       </ol>
-      <h3>Taches professionnelles\academiques</h3>
-      <ol>
-        <li>Reviser pour un test</li>
-        <li>Completer un projet</li>
-        <li>Participer a une reunion</li>
-        <li style="text-decoration: none;">
-        <li>
-          <form action="/page/" method="POST">
-              {% csrf_token %}
-              <button type="submit" name="type_tache" value="professionnelles">DECOUVRIR </button>
-          </form>
-        </li>
-      </ol>
-      <h3>Taches menageres</h3>
-      <ol>
-        <li>Nettoyer la cuisine</li>
-        <li>Laver les vetements</li>
-        <li>Ranger la chambre</li>
-        <li style="text-decoration: none;">
-           <form action="/page/" method="POST">
-              {% csrf_token %}
-              <button type="submit" name="type_tache" value="menageres">DECOUVRIR </button>
-          </form>
-        </li>
-      </ol>
-  </ul>
+  </main>
+
 
 
 </body>
